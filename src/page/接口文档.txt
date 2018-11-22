@@ -1,0 +1,170 @@
+
+
+
+
+
+
+
+
+
+
+个人中心的接口文档
+
+获取用户银行卡接口
+http://127.0.0.1:81/yx/u/api/account/list-card
+请求方式  post
+传入参数  无
+返回参数 bankId --银行卡种类id  bankBranch--分行  bankName--银行名称  bankCardName--开户人姓名
+bankCardId--卡号   cardStatus--卡状态（不知道怎么用）   其他参数不清楚
+BANK_MAP.put("CCB", "2");// 中国建设银行
+BANK_MAP.put("ICBC", "1"); // 中国工商银行
+BANK_MAP.put("ABC", "3"); // 中国农业银行
+BANK_MAP.put("BOC", "5");// 中国银行
+BANK_MAP.put("BOCM", "6"); // 交通银行
+BANK_MAP.put("CMB", "4"); // 招商银行
+BANK_MAP.put("CMBC", "18"); // 民生银行
+BANK_MAP.put("CEB", "19"); // 光大银行
+BANK_MAP.put("HXB", "20"); // 华夏银行
+BANK_MAP.put("CIB", "8"); // 兴业银行
+BANK_MAP.put("SPDB", "7"); // 上海浦发银行
+BANK_MAP.put("CITIC", "9");// 中信银行
+BANK_MAP.put("GDB", "15");// 广东发展银行
+BANK_MAP.put("BOB", "21");// 北京银行
+BANK_MAP.put("HZCB", "12");// 杭州银行
+BANK_MAP.put("NBBANK", "10");// 宁波银行
+BANK_MAP.put("PSBC", "16");// 中国邮政储蓄银行
+BANK_MAP.put("PINGAN", "23");// 平安银行
+BANK_MAP.put("SHB", "11");// 上海银行
+BANK_MAP.put("SDB", "17");// 深圳发展银行  （旧版前端没有这个，但是后台有）
+
+转账接口
+// 先验证资金密码是否正确
+http://127.0.0.1:81/yx/u/api/payment/apply-withdraw
+请求方式 post
+传入参数	amount--金额   cardId--卡id  withdrawPassword--资金密码（md5）
+返回参数 无数据  请求成功之后会向申请的接口请求  请求失败展示message
+// 发送申请接口
+http://127.0.0.1:81/yx/u/api/payment/prepare-withdraw
+请求方式 post
+传入参数	无
+返回参数 accountCardList--账户的银行卡信息  myAccountStatus--用户的账户信息（余额等）  withdrawConfig--提现的一些配置
+
+添加银行卡接口
+http://127.0.0.1:81/yx/u/api/account/bind-card
+请求方式 post
+传入参数 withdrawPassword--(md5资金密码) bankId--银行code bankBranch--分行 bankCardId--卡号
+返回参数 无数据  成功失败
+
+
+查询提现记录接口
+http://127.0.0.1:81/yx/u/api/account/search-withdraw
+请求方式 post
+传入参数 billno--可以不传   sTime--2018-09-02 00:00:00  eTime--结束时间  page--当前页 size--一页数量
+返回参数 amount--提款额度  billno--订单号  feeAmount--手续费  infos--相关信息  orderStatus--状态0是成功6、7是失败其他是待处理 orderTime--时间
+
+
+查询充值记录接口
+http://127.0.0.1:81/yx/u/api/account/search-recharge
+请求方式 post
+传入参数 status--0全部1成功2失败3待处理   billno--订单号  sTime-eTime--开始结束时间 page size
+返回参数	billno--订单号  feeAmount--手续费  amount--充值金额  orderStatus--订单状态1待处理  orderTime订单时间
+				method--充值方式0网银充值1转账汇款3系统充值4微信充值  没有2
+
+
+查询转账记录接口
+http://127.0.0.1:81/yx/u/api/account/search-zbrecord
+请求方式 post
+传入参数 billno--订单号  zbType转账类型3  sTime-eTime--开始结束时间 page size
+zbType=1是充值  2是提现 3是上级往下级转账 4是返点 5是返水 6是红利 7彩票游戏 14是TCG游戏 17是VR游戏 80是修正资金 90是活动 91是分红 99是第三方转账
+返回参数
+
+
+
+
+
+投注记录
+http://127.0.0.1:81/yx/u/api/game-lottery/search-order
+请求方式 post
+传入参数 lottery--彩种（无代表全部） status--无-全部 0-未开奖 1-未中奖 2-已派奖 4-已撤销 5系统撤单
+				sTime: 2018-09-02 00:00:00
+        eTime: 2018-09-02 23:59:59
+        page: 0
+        size: 10
+返回参数 allowCancel-能否撤单 billno--订单号 content-投注内容 issue--期数 lottery--彩种 method-玩法 money-投注金额
+				multiple-倍数 nums-注数 openCode-开奖号码 orderTime-订单时间 status-订单状态（同上） statusRemark-状态中文
+				winMoney-中奖金额
+
+
+追号记录接口
+http://127.0.0.1:81/yx/u/api/game-lottery/search-chase
+内容同投注记录
+
+
+//第三方平台的各个账户的余额
+http://127.0.0.1:81/yx/api/i/u/bank/getPcodeCbBaseList  （这个接口前缀和其他接口不一样）
+请求方式 post
+传入参数	无
+返回参数	balance--余额  cbId--code  cbName--中文名  platformId--id
+
+
+//第三方转账 先从接口中获取token  然后发送转账的接口
+http://127.0.0.1:81/yx/api/i/u/bank/playerTransferRefreshToken
+请求方式 post
+传入参数	无
+返回参数	data  就是token
+
+http://127.0.0.1:81/yx/api/i/u/bank/playerTransfer
+请求方式 post
+传入参数	turnOut--转出  turnIn--转入  cash--转账金额  payPasswd--资金密码  token--上个接口接收到的数据
+返回参数
+
+
+
+//绑定生日 性别 QQ号 微信号  
+http://127.0.0.1:81/yx/u/api/personal/bind
+HTTP请求方式: POST/GET
+传入参数   category 修改类型 (1-绑定性别 2-绑定生日 3-绑定微信号 4-绑定QQ)  必填 
+					sex  性别 (0-女，1-男)
+					birthday  生日（格式: yyyy-MM-dd）
+					wechatNum   	微信
+					qqNum     QQ
+返回参数
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

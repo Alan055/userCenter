@@ -1,0 +1,250 @@
+@import "global.less";
+.warpper-con {
+  width: 100%;
+  height: 100%;
+  margin-top: 0px;
+  .warpper-form {
+    width: 100%;
+    height: 100%;
+    .form-main {
+      width: 100%;
+      height: 96%;
+      border: 1px solid #e3e3e3;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .replacePhone {
+        .boxMain {
+          overflow: hidden;
+          div.banKDetail{
+            width: 100%;
+            background: #F6F6F6;
+            border: 1px solid #ccc;
+            padding: 10px 10px 10px 30px;
+            text-align: left;
+            margin-bottom: 20px;
+            p{
+              line-height: 2.5;
+              color: #A7A7A7;
+              font-size: 14px;
+              span{
+                color: #333;
+              }
+              .nameDetail{
+                color: @themeColor;
+              }
+            }
+          }
+          h5 {
+            margin-bottom: 20px;
+            text-align: left;
+            span {
+              color: #f53b4a;
+            }
+          }
+          .country,
+          .phoneNum,
+          .yzCode {
+            height: 44px;
+            // overflow: hidden;
+            h4 {
+              width: 84px;
+              height: 44px;
+              line-height: 44px;
+              text-align: right;
+            }
+          }
+          .country {
+            // margin-bottom: 10px;
+            .selInput {
+              width: 250px;
+              height: 44px;
+              line-height: 44px;
+              .selCountry {
+                display: block;
+                width: 250px;
+                height: 44px;
+                line-height: 44px;
+              }
+            }
+          }
+          .phoneNum {
+            clear: both;
+            // margin-top: 20px;
+            .selInput {
+              width: 364px;
+              height: 44px;
+              position: relative;
+              .nickNames{
+                text-align: left;
+                color: @themeColor;
+                line-height: 42px;
+              }
+              .replaceCell {
+                display: inline-block;
+                width: 364px;
+                height: 44px;
+                line-height: 44px;
+                text-align: left;
+                border: 1px solid #d8d8d8;
+                border-radius: 5px;
+                padding-left: 8px;
+              }
+              input {
+                width: 362px;
+                height: 42px;
+                line-height: 44px;
+                border: 1px solid #d8d8d8;
+                border-radius: 5px;
+                padding-left: 8px;
+                outline: none;
+              }
+              .success {
+                position: absolute;
+                color: #148eff;
+                top: 10px;
+                right: 10%;
+              }
+              .clearAll {
+                position: absolute;
+                color: #cccccc;
+                top: 10px;
+                right: 3%;
+                cursor: pointer;
+              }
+              p {
+                color: @themeColor;
+                text-align: left;
+                padding-left: 10px;
+              }
+            }
+            .errborder {
+              //border: 1px solid @themeColor;
+              //border-radius: 5px;
+            }
+          }
+          .emailMain{
+            display: flex;
+            justify-content: center;
+          }
+          .yzCode {
+            clear: both;
+            // margin-top: 10px;
+            .selInput {
+              width: 250px;
+              height: 44px;
+              input {
+                width: 248px;
+                height: 42px;
+                line-height: 44px;
+                border: 1px solid #d8d8d8;
+                border-radius: 5px;
+                padding-left: 8px;
+                outline: none;
+              }
+              .ivu-input {
+                height: 44px;
+              }
+            }
+            .replaceCell {
+              display: inline-block;
+              width: 364px;
+              height: 44px;
+              line-height: 44px;
+              text-align: left;
+              border: 1px solid #d8d8d8;
+              border-radius: 5px;
+              padding-left: 8px;
+              .imgInput {
+                border: none;
+                padding: 0;
+              }
+              .imgyzCode {
+                width: 106px;
+                height: 42px;
+                border-left: 1px solid #d8d8d8;
+                margin: 0;
+                overflow: hidden;
+                cursor: pointer;
+                img {
+                  width: 100%;
+                  height: 100%;
+                  vertical-align: top
+                }
+              }
+            }
+            .errborder {
+              border: 1px solid @themeColor;
+              border-radius: 5px;
+            }
+            .yzCodeBtn {
+              width: 104px;
+              height: 44px;
+              border: 1px solid @themeColor;
+              line-height: 44px;
+              text-align: center;
+              border-radius: 5px;
+              color: @themeColor;
+              cursor: pointer;
+              margin-left: 10px;
+            }
+            .renew {
+              background: #ffe7e7;
+            }
+          }
+          .submit {
+            margin-top: 40px;
+            span {
+              display: inline-block;
+              width: 180px;
+              height: 44px;
+              line-height: 44px;
+              font-size: 18px;
+              color: #adadad;
+              cursor: pointer;
+              background: #e1e1e1;
+              border-radius: 25px;
+              margin-left: 10%;
+            }
+            .active {
+              background: @themeColor;
+              color: #fff;
+            }
+            .renew{
+              background: #E1E1E1;
+              color: #333;
+              margin-right: 20px;
+            }
+          }
+          .tips {
+            width: 100%;
+            font-size: 13px;
+            color: #333;
+            text-align: left;
+            margin-top: 30px;
+          }
+          .errTips {
+            width: 360px;
+            height: 20px;
+            line-height: 20px;
+            text-align: left;
+            color: @themeColor;
+            position: relative;
+            left: 85px;
+            overflow: hidden;
+            div{
+              width: 100%;
+              height: 100%;
+            }
+            .icon_v3 {
+              vertical-align: middle;
+              margin-right: 3px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

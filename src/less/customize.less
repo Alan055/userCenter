@@ -1,0 +1,943 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('/static/font_v3/iconfont.eot');
+  src: url('/static/font_v3/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('/static/font_v3/iconfont.woff') format('woff'),
+  url('/static/font_v3/iconfont.ttf') format('truetype'),
+  url('/static/font_3/iconfont.svg#iconfont') format('svg');
+}
+.icon_v3 {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  /*-webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;*/
+}
+*{
+  box-sizing: border-box !important;
+}
+
+
+
+@import "global.less";
+
+
+// 兼容ie11
+.ivu-modal-wrap{
+  display: flex;
+  justify-content: center;
+  .ivu-modal{
+    margin: inherit !important;
+  }
+}
+
+
+//------------投注页面   分割线start
+// 拖拽组件的样式
+.noUi-base {
+  .noUi-origin {
+    background-color: #e9e9e9 !important;
+    border-radius: 3px !important;
+    .noUi-handle-lower {
+      width: 18px !important;
+      height: 18px !important;
+      border-radius: 14px;
+      top: -5px !important;
+      left: -12px !important;
+      cursor: pointer;
+      background-image: -webkit-linear-gradient(-30deg, #f5f5f5 0%, #dcdcdc);
+      box-shadow: 0px 11px 20px -8px #908484, 0px 11px 20px -8px #c7c7c7 inset;
+      text-shadow: 0px 1px 1px #ff0000, 0px 2px 2px #ff0000, 0px 3px 3px #ff0000;
+      border: 1px solid #99bfff;
+      outline: none;
+    }
+  }
+}
+
+//所有弹出框的样式
+.ivu-modal-content {
+  overflow: hidden;
+  .ivu-modal-body {
+    margin: 0 20px;
+    padding: 0;
+    font-size: 14px;
+  }
+  .ivu-icon {
+    font-size: 40px;
+    color: #fff;
+    &:before {
+      color: #fff;
+    }
+    &:hover {
+      color: #fff;
+    }
+
+  }
+  .ivu-modal-header {
+    background: @themeColor;
+    font-size: 18px;
+    text-align: center;
+    height: 54px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    .ivu-modal-header-inner {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+  .ivu-modal-footer {
+    border-top: none;
+    display: flex;
+    justify-content: center;
+    padding: 12px 0 24px 0;
+    button, span {
+      font-size: 14px;
+      display: inline-block;
+      width: 100px;
+      height: 34px;
+      line-height: 32px;
+      text-align: center;
+      border-radius: 17px;
+      padding: 0;
+      cursor: pointer;
+    }
+    span {
+      line-height: 34px;
+    }
+    .ivu-btn-text, .cancel {
+      background: @modalBg_btnCancel;
+      color: @gameplayColor;
+    }
+    .ivu-btn-primary, .ok {
+
+      margin-left: 10px;
+      background: @themeColor;
+      color: #fff;
+    }
+    .noClick span {
+      cursor: not-allowed;
+    }
+  }
+
+}
+
+
+
+
+
+// 订单详情的模态框
+.modal_orderDetail {
+  .ivu-modal-mask {
+    z-index: 1000 !important;
+  }
+  .ivu-modal-wrap {
+    z-index: 1010 !important;
+  }
+  .ivu-modal-body {
+    padding: 10px !important;
+    height: 400px;
+    overflow: hidden;
+    .tab {
+      width: 100%;
+      height: 26px;
+      line-height: 26px;
+      margin-bottom: 10px;
+      span {
+        width: 100px;
+        display: inline-block;
+        line-height: 26px;
+        text-align: center;
+        background: white;
+        border: 1px solid #E9E9E9;
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+      .active {
+        background-color: @themeColor;
+        border-color: @themeColor;
+        color: #fff;
+      }
+    }
+    .orderDetail_table {
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      .item {
+        overflow: hidden;
+        .col1, .col2, .col3, .col4 {
+          display: inline-block;
+          float: left;
+          border-right: 1px solid #ccc;
+          border-bottom: 1px solid #ccc;
+          height: 30px;
+          line-height: 30px;
+          padding-left: 10px;
+          font-size: 14px;
+        }
+        .col1, .col3 {
+          width: 15%;
+        }
+        .col2 {
+          width: 40%;
+        }
+        .col4 {
+          width: 30%;
+        }
+      }
+      .item_row {
+        .col2 {
+          width: 85%;
+        }
+        .openCode {
+          overflow: auto;
+          word-break: break-all;
+          .al_scorll();
+        }
+      }
+      .table_bottm {
+        .col1, .col2 {
+          height: 100px;
+        }
+        .col1 {
+          padding-top: 25px;
+          span {
+            color: #2d8cf0;
+            cursor: pointer;
+          }
+        }
+        .col2 {
+
+        }
+      }
+    }
+    .everyIssue_table {
+
+      width: 100%;
+      height: calc(~"100% - 26px");
+      overflow: hidden;
+      ul {
+        width: 100%;
+        height: 40px;
+        overflow: hidden;
+        font-size: 14px;
+        li {
+          border-right: 1px solid #ccc;
+          border-bottom: 1px solid #ccc;
+          height: 40px;
+          line-height: 40px;
+          float: left;
+          text-align: center;
+        }
+        li:nth-child(1) {
+          width: 17%
+        }
+        li:nth-child(2) {
+          width: 7%
+        }
+        li:nth-child(3) {
+          width: 15%
+        }
+        li:nth-child(4) {
+          width: 15%
+        }
+        li:nth-child(5) {
+          width: 12%
+        }
+        li:nth-child(6) {
+          width: 24%
+        }
+        li:nth-child(7) {
+          width: 10%;
+          border-right: none;
+        }
+        .back {
+          span {
+            border: none;
+            background-color: @themeColor;
+            color: #fff;
+            border-radius: 4px;
+            margin: 5px auto;
+            padding: 0 4px;
+            cursor: pointer;
+            display: inline-block;
+            width: 60px;
+            height: 26px;
+            line-height: 26px;
+          }
+        }
+      }
+      .everyIssue_tableContentBox {
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        width: 100%;
+        height: calc(~"100% - 40px");
+        overflow: auto;
+        border-bottom: 1px solid #ccc;
+        .al_scorll();
+
+      }
+      .everyIssue_tableTop {
+        border: 1px solid #ccc;
+      }
+      .isScroll {
+        width: calc(~"100% - 6px");
+      }
+    }
+  }
+  .ivu-modal-footer {
+    border: none;
+    padding-bottom: 30px;
+  }
+}
+
+
+
+
+
+
+//各种模态框样式
+//基础弹框  --这个的层级应该是第二高的 设置z-index  默认是1000
+.defaultModal {
+  .ivu-modal-mask {
+    z-index: 1020 !important;
+  }
+  .ivu-modal-wrap {
+    z-index: 1030 !important;
+  }
+  .ivu-modal-content {
+    background: transparent;
+    box-shadow: unset;
+    .ivu-modal-close, .ivu-modal-footer {
+      display: none;
+    }
+    .ivu-modal-body {
+      margin: 0;
+      padding: 0;
+      .defaultModal_content {
+        width: 500px;
+        min-height: 188px;
+        background-size: 100% 100%;
+        color: #fff;
+        font-size: 22px;
+        text-align: center;
+        padding-top: 100px;
+        &.success {
+          background: url("/static/img/img_pop_ups_b.png") no-repeat;
+          background-size: 100% 100%;
+          padding-bottom: 12px;
+        }
+        &.warning {
+          background: url("/static/img/img_pop_ups_a.png") no-repeat;
+          background-size: 100% 100%;
+          padding-bottom: 12px;
+        }
+        &.confim {
+          background: url("/static/img/img_pop_ups_c.png") no-repeat;
+          background-size: 100% 100%;
+          padding-bottom: 12px;
+        }
+        &.success-h5 {
+          background: url("/static/img/bg_upwindows@3x.png") no-repeat;
+        }
+      }
+      .defaultModal_bottom {
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 80px;
+        color: #fff;
+        span {
+          display: inline-block;
+          width: 100px;
+          height: 34px;
+          background: @themeColor;
+          border-radius: 17px;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          cursor: pointer;
+          font-size: 14px;
+        }
+        .cancel {
+          background: #E8E8E8;
+          color: #666;
+        }
+        .ok {
+          background: @themeColor;
+          color: #fff;
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+// 开奖的弹框层级是最高的
+.openLotteryModal {
+  .ivu-modal-mask {
+    z-index: 1040 !important;
+  }
+  .ivu-modal-wrap {
+    z-index: 1050 !important;
+  }
+}
+
+// ------------------投注页面   分割线end
+
+
+
+
+
+@media ( max-width: 1280px ) {
+  .newPersonModal {
+    .ivu-modal-wrap {
+      overflow: hidden;
+      // zoom: .8;
+      .ivu-modal{
+        top: 34%;
+      }
+    }
+  }
+
+  .newPersonBonus {
+    .ivu-modal-wrap {
+      overflow: hidden;
+      top:-7%;
+      // zoom: .8;
+    }
+  }
+}
+
+// 第三方游戏转账
+.thridTransfer_Modal {
+  .ivu-modal-wrap{
+    // margin: 0 auto;
+  }
+  .ivu-modal-content {
+    .ivu-modal-body {
+      position: relative;
+      .close {
+        position: absolute;
+        right: 0%;
+        top: -28%;
+        font-size: 40px;
+        color: #fff;
+        cursor: pointer;
+      }
+      .thridTransferType {
+        margin: 24px auto 36px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        span {
+          width: 120px;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .bor(#ddd);
+          background: #e8e8e8;
+          color: #333;
+          border-radius: 22px;
+          font-size: 16px;
+          cursor: pointer;
+          &:nth-child(1) {
+            margin-right: 10px;
+          }
+          &.active {
+            background: @themeColor;
+            border: none;
+            color: #fff;
+          }
+        }
+      }
+      .thridTransferInput {
+        margin: 24px 0 0 20px;
+        height: 44px;
+        line-height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        color: #999;
+        position: relative;
+        // width: fit-content;
+        width: 480px;
+        span {
+          display: inline-block;
+          color: @themeColor;
+          width: 363px;
+          height: 100%;
+          padding: 0 10px;
+          border: 1px solid #e8e8e8;
+          border-radius: 4px;
+          outline: none;
+          margin: 0 10px;
+        }
+        em {
+          position: absolute;
+          right: 20px;
+          top: 2px;
+        }
+      }
+      .errTips {
+        height: 40px;
+        color: @themeColor;
+        p {
+          width: 363px;
+          margin-left: 20%;
+        }
+      }
+      .write {
+        margin: 24px 0 0 25px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        color: #999;
+        position: relative;
+        // width: fit-content;
+        width: 575px;
+        input {
+          width: 363px;
+          height: 100%;
+          padding: 0 10px;
+          .bor(#e8e8e8);
+          border-radius: 4px;
+          outline: none;
+          margin: 0 10px;
+        }
+        span {
+          width: 100px;
+          height: 36px;
+          border-radius: 18px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: @themeColor_Sec;
+          color: #fff;
+          cursor: pointer;
+        }
+        em {
+          position: absolute;
+          right: 120px;
+          top: 14px;
+        }
+      }
+      .btn {
+        margin: 0 auto 40px;
+        background: @themeColor;
+        color: #fff;
+        width: 177px;
+        height: 48px;
+        border-radius: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        cursor: pointer;
+        &.noClick {
+          background: #e6e6e6;
+          color: #333;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+  .ivu-modal-footer {
+    display: none;
+  }
+}
+
+// 提示老用户去修改资金密码弹窗
+.modifyFundsPass_Modal,.errTipsMadel{
+  .ivu-modal-mask {
+    z-index: 1020 !important;
+  }
+  .ivu-modal-wrap {
+    z-index: 1030 !important;
+  }
+  .ivu-modal-content {
+    background: transparent;
+    box-shadow: unset;
+    .ivu-modal-close, .ivu-modal-footer {
+      display: none;
+    }
+    .ivu-modal-body {
+      margin: 0;
+      padding: 0;
+      .defaultModal_content {
+        width: 500px;
+        min-height: 188px;
+        background-size: 100% 100%;
+        color: #fff;
+        font-size: 22px;
+        text-align: center;
+        padding-top: 100px;
+        &.success {
+          background: url("/static/img/img_pop_ups_b.png") no-repeat;
+          background-size: 100% 100%;
+          padding-bottom: 12px;
+        }
+        &.warning {
+          background: url("/static/img/img_pop_ups_a.png") no-repeat;
+          background-size: 100% 100%;
+          padding-bottom: 12px;
+        }
+        &.confim {
+          background: url("/static/img/img_pop_ups_c.png") no-repeat;
+          background-size: 100% 100%;
+          padding-bottom: 12px;
+        }
+        &.success-h5 {
+          background: url("/static/img/bg_upwindows@3x.png") no-repeat;
+        }
+      }
+      .defaultModal_bottom {
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 80px;
+        color: #fff;
+        span {
+          display: inline-block;
+          width: 100px;
+          height: 34px;
+          background: @themeColor;
+          border-radius: 17px;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          cursor: pointer;
+          font-size: 14px;
+          a{
+            color: #fff;
+          }
+        }
+        .cancel {
+          background: #E8E8E8;
+          color: #666;
+        }
+        .ok {
+          background: @themeColor;
+          color: #fff;
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+}
+
+
+
+// 消息中心
+.msgMain{
+  .ivu-checkbox-group{
+
+  }
+}
+
+// 个人中心  账户中心 性别 生日
+.gender {
+  div {
+    .ivu-select-disabled {
+      .ivu-select-selection {
+        background: #fff;
+        color: #333;
+      }
+    }
+  }
+}
+
+.birth {
+  div {
+    .ivu-input[disabled] {
+      background: #fff;
+      color: #333;
+    }
+  }
+}
+
+// 个人中心  账户中心 手机号
+.country {
+  .ivu-select-single {
+    .ivu-select-selection {
+      height: 44px;
+      line-height: 44px;
+      margin-bottom: 10px;
+      .ivu-select-placeholder {
+        height: 44px;
+        line-height: 44px;
+      }
+      .ivu-select-selected-value {
+        height: 44px;
+        line-height: 44px;
+      }
+    }
+  }
+}
+
+// 个人中心 账户总揽
+.transferbag{
+  .ivu-select{
+    height: 36px;
+    div{
+      // height: 36px;
+    }
+  }
+}
+
+.transfer {
+  .ivu-select-selection {
+    width: 130px;
+    height: 34px;
+    line-height: 34px;
+    left: -30%;
+    top: -2px;
+  }
+}
+
+.selInput {
+  .ivu-select {
+    // height: 42px;
+    .ivu-select-selection {
+      height: 42px;
+      & > div {
+        height: 100%;
+        span {
+          height: 100%;
+          text-align: left;
+          line-height: 42px;
+        }
+      }
+    }
+    .ivu-select-dropdown {
+      text-align: left;
+    }
+  }
+  .opening {
+    width: 114px;
+    margin-left: 10px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .selProvince {
+    .ivu-select-dropdown {
+      width: 130px !important;
+    }
+  }
+}
+
+// 添加银行卡
+.addcardModal {
+  .content {
+    font-size: 14px;
+    margin: 50px 37px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    height: 60px;
+    .input {
+      font-size: 14px;
+      height: 44px;
+      input {
+        margin-left: 5px;
+        border: 1px solid #d9d9d9;
+        color: #888;
+        padding: 0 10px;
+        height: 100%;
+        border-radius: 4px;
+        width: calc(~"100% - 64px");
+        outline: none;
+      }
+    }
+    .err {
+      padding-left: 64px;
+      color: @themeColor;
+      font-size: 12px;
+      em {
+        margin-right: 5px;
+      }
+    }
+  }
+  .prompt {
+    color: @themeColor;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+// 充值弹框
+.rechargeModal {
+  .ivu-modal-mask {
+    z-index: 1000 !important;
+  }
+  .ivu-modal-wrap {
+    z-index: 1010 !important;
+  }
+  .rechargeModal_Box {
+    .transferRecharge {
+      padding: 10px 0;
+      justify-content: center;
+      .left {
+        .card, .table {
+          margin: 0px auto 10px;
+        }
+      }
+      .rechargePrompt {
+        margin-top: 10px;
+        border-top: 1px solid #e3e3e3;
+      }
+    }
+  }
+  .ivu-modal-footer {
+    position: relative;
+    .guideFinish {
+      position: absolute;
+      width: 100px;
+      height: 34px;
+      border-radius: 17px;
+      top: 12px;
+      right: 293px;
+      .left {
+        top: -22%;
+        left: calc(100% + 30px);
+        line-height: 22px;
+      }
+    }
+  }
+}
+
+// -------------个人中心   分割线end
+
+// mask遮罩层
+.ivu-spin-fix {
+  z-index: 9999 !important;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+//复选框样式
+.ivu-checkbox-wrapper {
+  .ivu-checkbox-checked .ivu-checkbox-inner {
+    border-color: @themeColor;
+    background-color: @themeColor;
+  }
+  .ivu-checkbox-indeterminate .ivu-checkbox-inner {
+    border-color: @themeColor;
+    background-color: @themeColor;
+  }
+}
+
+// 分页器
+.switch_btn {
+  .ivu-page-prev, .ivu-page-next {
+    display: inline-block;
+    width: 60px;
+    background: #EEEEEE;
+    &:hover {
+      a {
+        color: @themeColor;
+      }
+    }
+  }
+  .ivu-page-item {
+    &:hover {
+      border: 1px solid @themeColor;
+      a {
+        color: @themeColor;
+      }
+    }
+  }
+  .ivu-page-item-active {
+    border: none;
+    background: @themeColor;
+    a {
+      color: #fff
+    }
+    &:hover {
+      a {
+        color: #fff
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  // 个人中心 账户信息
+  .transfer {
+    .ivu-select-selection {
+      width: 100px;
+      height: 34px;
+      line-height: 34px;
+      left: -30%;
+      top: -2px;
+    }
+  }
+}
+
+.ivu-select {
+  .ivu-select-selection, input {
+    height: 100%;
+    > div {
+      height: 100%;
+    }
+    .ivu-select-placeholder, .ivu-select-selected-value {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+  }
+  .ivu-select-item {
+    text-align: left;
+    padding-left: 10px;
+  }
+  .ivu-select-dropdown {
+    .al_scorll();
+  }
+}
+
+// input的全局样式 解决搜狗浏览器input自带的键盘
+input::-webkit-input-safebox-button{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

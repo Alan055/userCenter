@@ -1,0 +1,90 @@
+//函数
+.bor(@col) {
+  border: 1px solid @col;
+}
+//统一滚动条样式
+.al_scorll(){
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+    background: @themeColor;
+  }
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+    border-radius: 0;
+    background: #edeff1;
+  }
+}
+//统一导航条样式  小木条
+.al_navWood{
+  &:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: 3px;
+    background: @themeColor;
+    z-index: 10;
+  }
+}
+
+
+// 变量
+//@bodyColor: #f5f5f5;//投注容器背景颜色颜色
+@themeColor: #6387fc; // 主题颜色--一些按钮背景色  字体颜色
+@themeColor_Sec: #ff7437; // 主题第二颜色--一些按钮背景色  字体颜色
+@themeColor_border: #E74552; //主题边框色  一些按钮的边框色
+
+@methodBox_bor: #E6E6E6; //玩法区边框色
+@oneMenuBg: #cee2ff; //一级菜单背景色
+@oneMenuColor: #555555; // 一级菜单字体颜色
+@twoMenuColor_Lab: #333333; // 二级菜单label字体色
+@twoMenuColor_Sel: #666666; // 二级菜单选项字体色
+
+@gameplayColor: #666; //玩法示意字体颜色
+@gameBounsColor_Icon: #ACACAC; //玩法奖金颜色
+
+@chooseNumberBoxBg: #E6E6E6; //选号区背景色
+@chooseNumberBox_bor: #DCDCDC; //选号区选号边框
+@chooseNumberBoxColor_Lab: #333; //选号区label字体颜色
+@chooseNumberBoxColor_Sel: #4e5d73; //选号区选项字体颜色  全大小单双清
+
+@chooseNoteColor: #666666; //选注栏字体主颜色
+@chooseNoteColor_Mul: #666666; //选注栏选倍区字体颜色
+
+@orderColor: #333; //订单字体颜色  主
+@orderColor_Sec: #666; //订单字体颜色  副
+@orderTabBg: #e4ebf2; //订单导航条背景颜色
+
+@historyColor_Top: #808080;//历史开奖号码头部字体颜色
+
+@userBg_Top: #edf3fb; // 用户中心label背景图
+@userColor_money: #f53b4a;// 用户中心 金额的字体颜色
+@userColor_bor: #c1d7ef; // 用户中心边框的颜色
+
+@modalBg_btnCancel:#e8e8e8; // 模态框的取消按钮背景样式
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
